@@ -1,15 +1,21 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LogoutButton';
+import Profile from './components/Profile';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit and save to reload.
-        </p>
-      </header>
-    </div>
-  );
-}
+  const { isLoading } = useAuth0();
+
+  if (isLoading) return <div>Loading....</div>
+
+    return ( 
+        <>
+        <LoginButton />
+        <LogoutButton />
+        <Profile />
+        </>
+    )
+};
 
 export default App;
